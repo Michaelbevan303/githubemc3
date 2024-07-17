@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michael's Project</title>
+<style>
+
+  /* popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:orangered;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 900;
+  }
+  .popup-button{
+    background-color: black;
+    color: aliceblue;
+  }
+  .popup form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .popup button{
+    background-color: white;
+    color: orangered;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .popup input[type="text"], .popup input[type="email"], .popup input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+
+  }
+  /* popup*/
+
+.home{
+    width: 100%;
+    min-height: 100vh; 
+    background-image: url('sec1background.png');
+    background-position: right bottom; 
+    background-repeat: no-repeat;
+    flex-direction: row;
+  }
+  nav {
+    color:white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+   
+    top: 0;
+    width: 100%;
+    z-index: 1000; 
+   
+  }
+  nav img {
+    height: 100px; 
+    width: 103px;
+    margin-left: 25%;
+     }
+  nav ul {
+    background-color:orangered;
+    list-style-type: none;
+    margin: 0;
+    margin-left: 15%;
+    padding: 20px 20px;
+    display: flex;
+    position: fixed;
+    margin-top: 0px;
+  }
+  nav ul li {
+    margin-right: 20px;
+   
+  }
+  nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: large;
+    padding: 0px 25px;
+
+  }
+  nav ul li a:hover{
+          color: aliceblue;
+  }
+  .signup-btn {
+    overflow: hidden;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 5%;
+    font-size: large;
+  }
+  .s1div1{
+    padding: 8% 0% 0% 7%;
+  }
+  .s1div1 h2{
+      font-family:Verdana, Geneva, Tahoma, sans-serif;
+      font-weight: 600;
+      font-size: 30px;
+  }
+  .hilights{
+    color: orangered;
+  }
+  .s1btn button{
+         background-color: black;
+         color: aliceblue;
+         border-radius: 5px;
+         padding: 15px 25px;
+         cursor: pointer;
+         font-weight: 700;
+         font-size: larger;
+  }
+  .s1btn{
+    padding: 5% 0% 0% 15% ;
+  }
+  .about{
+    max-height: 100vh;
+  }
+  .about h1{
+       text-align: center;
+  }
+  .sec2img{
+    width: 40%;
+    max-height: 100vh;
+    overflow: hidden;
+    padding: 5%;
+  }
+  .sec2img img{
+    height: 80%;
+    width: 100%;
+  }
+  .sec2content{
+   overflow: hidden;
+    margin-top: 20px;
+    width: 40%;
+    max-height:90vh;
+    padding: 5%;
+    font-size: x-large;
+    font-weight: 700;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    line-height: 50px;
+  }
+  .sec2div1{
+    display: inline-flex;
+  }
+  
+  
+  .s1{
+    text-align: center;
+    max-height: 100vh;
+    background: url(sec3background1.jpg);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+
+.a1{
+    color: orangered;
+    text-align: center;
+    margin-top: 15px;
+    padding: 5px;
+}
+.a2{
+    color: black;
+    text-align: center;
+    margin-top: 15px;
+    padding:5px;
+}
+.experts{
+  max-height: 90vh;
+  text-align: center;
+  background: url(sec3background.jpg);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+body {
+font-family: Arial, sans-serif;
+}
+
+.experts h1{
+text-align: center;
+}
+
+.carousel{
+  width: 100;
+  min-height: 90vh;
+  
+}
+
+.carousel-track {
+  display: flex;
+transition: transform 0.5s ease;
+margin-left:33% ;
+margin-top: 5%;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+}
+
+.carousel-item img {
+width: 40%;
+display: block;
+height: 60%;
+border-radius: 15px;
+}
+.carousel-item img:hover{
+  transform: scale(1.1); 
+  border: 3px solid black;
+}
+
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+ margin-top: -34%;
+transform: translateY(-50%);
+background-color: rgb(27,7,7,0.5);
+color: black;
+border: none;
+cursor: pointer;
+padding: 10px;
+font-size: 1.5rem;
+z-index: 2;
+}
+
+.carousel-prev {
+left: 10px;
+}
+
+.carousel-next {
+right: 10px;
+}
+.missions h1{
+  text-align: center;
+}
+.sec4img{
+  width: 40%;
+  max-height: 100vh;
+  overflow: hidden;
+  padding: 5%;
+}
+.sec4img img{
+  margin-top: 10%;
+  height: 70%;
+  width: 100%;
+}
+.sec4content{
+  margin-top: 20px;
+  width: 40%;
+  max-height:90vh;
+  padding: 5%;
+  font-size: larger;
+  font-weight: 700;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+  line-height: 45px;
+}
+.sec4div1{
+  display: inline-flex;
+}
+.bookings{
+  overflow: hidden;
+}
+.bookings h1{
+  text-align: center;
+}
+.bookings p{
+   margin-top: 30px;
+   margin-left: 30px;
+}
+.carousels{
+  width: 100;
+  min-height: 90vh;
+  
+}
+
+.carousels-track {
+  display: flex;
+transition: transform 0.5s ease;
+margin-left:8% ;
+margin-top: 5%;
+}
+
+.carousels-item {
+  flex: 0 0 35%;
+}
+
+.carousels-item img {
+width: 60%;
+display: block;
+height: 70%;
+border-radius: 15px;
+}
+.carousels-item img:hover{
+  transform: scale(1.1); 
+  border: 3px solid orangered;
+}
+
+.carousels-prev,
+.carousels-next {
+  position: absolute;
+margin-top: -18%;
+transform: translateY(-50%);
+background-color: rgb(27,7,7,0.5);
+color: black;
+border: none;
+cursor: pointer;
+padding: 10px;
+font-size: 1.5rem;
+z-index: 2;
+}
+
+.carousels-prev {
+left: 10px;
+}
+
+.carousels-next {
+right: 10px;
+}
+.bookings p{
+  margin-top: -5%;
+  padding: 5%;
+  font-size: large;
+  font-weight: 700;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+  line-height: 35px;
+}
+.chooseus h1{
+  text-align: center;
+}
+.chooseus p{
+  padding: 5%;
+  font-size: large;
+  font-weight: 700;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+  line-height: 35px;
+}
+.sec6div1{
+  display: inline-flex;
+}
+.sec6diva{
+  width: 65%;
+  margin-left: 50px;
+}
+.sec6diva dl dt{
+  padding: 20px;
+  color: orangered;
+  font-size: larger;
+}
+.sec6diva dl dd{
+  font-weight: 700;
+  padding: 10px;
+}
+.sec6divb{
+  width: 30%;
+}
+.sec6divb img{
+  width: 100%;
+}
+.sec7div1{
+  display: inline-flex;
+  margin-left: 5%;
+}
+.branch h1{
+  text-align: center;
+}
+.sec7img1 ,.sec7img2{
+  width: 40%;
+  padding: 5%;
+  text-align: center;
+}
+
+.sec7img1 img,.sec7img2 img{
+  width: 100%;
+}
+.sec7img1 p,.sec7img2 p{
+  font-weight: 700;
+  font-style: italic;
+  font-size: larger;
+}
+.sec7div2{
+  width: 40%;
+  text-align: center;
+  margin-left: 30%;
+}
+.sec7div2 img{
+  width: 90%;
+}
+.sec7div2 p{
+  font-weight: 700;
+  font-style: italic;
+  font-size: larger;
+}
+.bottom{
+  background-color: orangered;
+  align-items: center;
+}
+.logos ul{
+  list-style-type: none;
+  overflow: hidden;
+  display: flex;
+  padding: 10px;
+  margin-left: 40%;
+}
+.logos ul li{
+  padding: 25px  25px 0 25px;
+}
+.logos ul li a img{
+  transition: transform 0.3s ease;
+}
+.logos ul li a img:hover{
+  transform: scale(1.1); 
+  border: 2px solid aliceblue;
+}
+.bottom h1{
+  text-align: center;
+  padding: 10px;
+  color: orangered;
+  background-color: black;
+  letter-spacing: 1px;
+  white-space: 5px;
+}
+.bottom p{
+  color: black;
+  font-weight: 800;
+  font-size: 50px;
+  padding: 5px;
+  text-align: center;
+}
+
+</style>
+
+</head>
+<body>
+  
+  <script>
+    // JavaScript to show/hide popup
+    function openPopup() {
+      document.getElementById("overlay").style.display = "block";
+      document.getElementById("popup").style.display = "block";
+    }
+  
+    function closePopup() {
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("popup").style.display = "none";
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+  const track = document.querySelector('.carousel-track');
+  const slides = Array.from(track.children);
+  const nextButton = document.querySelector('.carousel-next');
+  const prevButton = document.querySelector('.carousel-prev');
+
+  let slideWidth = slides[0].getBoundingClientRect().width;
+
+  // Arrange slides next to each other
+  slides.forEach((slide, index) => {
+    slide.style.left = slideWidth * index + 'px';
+  });
+
+  // Next button functionality
+  nextButton.addEventListener('click', function() {
+    const currentSlide = track.querySelector('.active');
+    const nextSlide = currentSlide.nextElementSibling;
+
+    // Move to next slide
+    const amountToMove = nextSlide.style.left;
+    track.style.transform = `translateX(-${amountToMove})`;
+
+    // Update active class
+    currentSlide.classList.remove('active');
+    nextSlide.classList.add('active');
+  });
+
+  // Previous button functionality
+  prevButton.addEventListener('click', function() {
+    const currentSlide = track.querySelector('.active');
+    const prevSlide = currentSlide.previousElementSibling;
+
+    // Move to previous slide
+    const amountToMove = prevSlide.style.left;
+    track.style.transform = `translateX(-${amountToMove})`;
+
+    // Update active class
+    currentSlide.classList.remove('active');
+    prevSlide.classList.add('active');
+  });
+});
+  
+
+document.addEventListener('DOMContentLoaded', function() {
+  const track = document.querySelector('.carousels-track');
+  const slides = Array.from(track.children);
+  const nextButton = document.querySelector('.carousels-next');
+  const prevButton = document.querySelector('.carousels-prev');
+
+  let slideWidth = slides[0].getBoundingClientRect().width;
+
+  // Arrange slides next to each other
+  slides.forEach((slide, index) => {
+    slide.style.left = slideWidth * index + 'px';
+  });
+
+  // Next button functionality
+  nextButton.addEventListener('click', function() {
+    const currentSlide = track.querySelector('.active');
+    const nextSlide = currentSlide.nextElementSibling;
+
+    // Move to next slide
+    const amountToMove = nextSlide.style.left;
+    track.style.transform = `translateX(-${amountToMove})`;
+
+    // Update active class
+    currentSlide.classList.remove('active');
+    nextSlide.classList.add('active');
+  });
+
+  // Previous button functionality
+  prevButton.addEventListener('click', function() {
+    const currentSlide = track.querySelector('.active');
+    const prevSlide = currentSlide.previousElementSibling;
+
+    // Move to previous slide
+    const amountToMove = prevSlide.style.left;
+    track.style.transform = `translateX(-${amountToMove})`;
+
+    // Update active class
+    currentSlide.classList.remove('active');
+    prevSlide.classList.add('active');
+  });
+});
+
+
+  </script>
+
+  <section class="home" id="home">
+  <nav>
+    <div>
+      <img src="logo.png" alt="Logo">
+    </div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experts">Experts</a></li>
+      <li><a href="#bookings">Bookings</a></li>
+      <li><a href="#branches">Branches</a></li>
+    </ul>
+    <button class="signup-btn"  onclick="openPopup()">Sign Up</button>
+    <div class="overlay" id="overlay"></div>
+
+<div class="popup" id="popup">
+  <h2>Signup Form</h2>
+  <form  name="myform" onsubmit="return gym()">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" placeholder="Email" required>
+    <input type="submit" value="Submit" class="popup-button">
+  </form>
+  <button onclick="closePopup()">Close</button>
+</div>
+
+  </nav>
+  <div class="s1div1">
+    <h2>"The body achives what</h2>
+    <h2><span class="hilights">the mind Belives</span>."</h2>
+  </div>
+  <div class="s1btn">
+  <button>Book Session</button>
+  </div>
+  </section>
+<div style="color: black; background-color: black;">.</div>
+  <section class="about" id="about">
+        <h1>ABOUT <span style="color: orangered;">US</span></h1>
+        <div class="sec2div1">
+          <div class="sec2img">
+            <img src="sec2background.png">
+          </div>
+          <div class="sec2content">
+             welcome to Fitness App,your go-to fitness app for seamless and convinent class bookings.We are dedicated to
+              helping you achieve your fitness goals by providing a user-friendly platform where you can easily find a book 
+              a wide range of fitness classes,from yoga and pilates to high-intensity interval training (HIIT) and spinning.
+            
+          </div>
+        </div>
+        
+  </section>
+  <div style="color: black; background-color: black; padding: 0%;">.</div>
+  <section class="experts" id="experts">
+    
+    <h1 >OUR<span style="color: orangered;"> EXPERTS</span></h1>
+
+<div class="carousel">
+<div class="carousel-track">
+<div class="carousel-item active">
+  <img src="Frame 4.png" alt="Image 1">
+</div>
+<div class="carousel-item">
+  <img src="Frame 5.png" alt="Image 2">
+</div>
+<div class="carousel-item">
+  <img src="Frame 6.png" alt="Image 3">
+</div>
+<div class="carousel-item">
+  <img src="Frame 7.png" alt="Image 3">
+</div>
+<div class="carousel-item">
+  <img src="Frame 8.png" alt="Image 3">
+</div>
+<div class="carousel-item">
+  <img src="Frame 9.png" alt="Image 3">
+</div>
+</div>
+<button class="carousel-prev">&lt;</button>
+<button class="carousel-next">&gt;</button>
+</div>
+</section>
+<div style="color: black; background-color: black;">.</div>
+<section class="missions" id="missions">
+  <h1 >OUR<span style="color: orangered;"> MISSIONS</span></h1>
+  <div class="sec4div1">
+    <div class="sec4img">
+      <img src="sec4image.png">
+    </div>
+    <div class="sec4content">
+       At Fitness App, our mission is to fitness acessible and enjoyable fot everyone. We belive that staying fit should be 
+       simple and stress-free, so we have created an app that takes the hassel out of finding and booking fitness classes.
+       Whether you're fitness enthusiast or just starting your fitness journey, we've got something for you.   
+      
+    </div>
+  </div>
+   </section>
+   <div style="color: black; background-color: black;">.</div>
+   <section class="bookings" id="bookings">
+    <h1 >OUR<span style="color: orangered;"> BOOKINGS</span></h1>
+    <p><span style="color: orangered;">Feel free </span> to tweak it as needed!</p>
+    <div class="carousels">
+      <div class="carousels-track">
+        <div class="carousels-item active">
+          <img src="image 6.png" alt="Image 1">
+        </div>
+        <div class="carousels-item">
+          <img src="image 7.png" alt="Image 2">
+        </div>
+        <div class="carousels-item">
+          <img src="image 8.png" alt="Image 3">
+        </div>
+        <div class="carousels-item">
+          <img src="image 9.png" alt="Image 3">
+        </div>
+        <div class="carousels-item">
+          <img src="image 10.png" alt="Image 3">
+        </div>
+      </div>
+      <button class="carousels-prev">&lt;</button>
+      <button class="carousels-next">&gt;</button>
+    </div>
+    <h2 style="color: orangered; margin-left: 30px; margin-top: -200px;"> Book Your Classes :</h2>
+    <p>Ready to get started? Choose your favourite workout from our wide range of classes and book your spot
+      in just a few taps. Whether it's yoga, HITT, or spinning, find the perfect class that fits your schedule
+      and fitness goals. Let's make fiteness simple and fun!
+    </p>
+   </section>
+   <div style="color: black; background-color: black; padding: 0%;">.</div>
+   <section class="chooseus" id="chooseus">
+    <h1>WHY<span style="color: orangered;"> CHOOSE US</span></h1>
+    <p>We understand everyone's fitness journey in unique, and we are here to support you every step of the way. Our app is 
+      designed to provide a seamless and enjoyable booking experience, so you can focus on what matters most-your health
+      and well-being. Join Fitness App today and take the first step towards a healthier, happier you.
+    </p>
+    <div class="sec6div1">
+     <div class="sec6diva">
+      <dl>
+        <dt><b>Personal Training</b></dt>
+        <dd>Achieve your fitness goals with personalized workouts and one-on-one coaching.</dd>
+        <dt><b>Certfied Trainers</b></dt>
+        <dd>Train with top-certified instructors who are passionate about helping you reach your fitness goals.</dd>
+        <dt><b>Time Management</b></dt>
+        <dd>Maximize your day with our easy-to-schedule fitness classes.</dd>
+        </dl>
+     </div>
+     <div class="sec6divb">
+      <img src="sec6img.png">
+     </div>
+    </div>
+   </section>
+   <div style="color: black; background-color: black; padding: 0%;">.</div>
+   <section class="branch" id="branches">
+      <h1>OUR<span style="color: orangered;"> BRANCHES</span></h1>
+      <div class="sec7div1">
+          <div class="sec7img1"><img src="chennai.png"><p>CHENNAI</p></div>
+          <div class="sec7img2"><img src="bangalore.png"><p>BANGALORE</p></div>
+      </div>
+      <div class="sec7div2">
+        <img src="hyderabad.png"><p>HYDERABAD</p></div>
+      </div>
+   </section>
+   <section class="bottom">
+    <h1>Contact  Us</h1>
+    <div class="logos">
+      <ul>
+        <li><a href=""><img src="instagram.jpg"></a></li>
+        <li><a href=""><img src="facebook.jpg"></a></li>
+        <li><a href=""><img src="gmail1.jpg"></a></li>
+      </ul>
+    </div>
+    <p>"Start Your Fitness Journey With Us"</p>
+   </section>
+  </body>
+</html>
